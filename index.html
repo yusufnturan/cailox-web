@@ -1,1 +1,79 @@
-<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Cailox kontrollü TURAN test portalı"><title>Cailox | TURAN Test Portalı</title><link rel="stylesheet" href="assets/styles.css"></head><body><main class="shell"><section id="loginView" class="card auth"><div class="brand">CAILOX</div><div class="badge">TURAN TEST PORTALI</div><h1>Test oturumu</h1><p class="lead">Yetkili test hesabınla giriş yap.</p><div class="notice"><strong>Konuşma kaydı</strong><p>Bu testte yazdığın mesajlar, TURAN'ın yanıtları, performans bilgileri ve verdiğin geri bildirimler TURAN'ın değerlendirilmesi ve geliştirilmesi amacıyla kaydedilir. Parola veya özel/gizli bilgi paylaşma.</p></div><form id="loginForm"><label>Kullanıcı adı<input id="username" autocomplete="username" required></label><label>Parola<input id="password" type="password" autocomplete="current-password" minlength="8" required></label><label class="check"><input id="consent" type="checkbox" required><span>Konuşmaların geliştirme amacıyla kaydedileceğini okudum ve test oturumunu başlatmak istiyorum.</span></label><button type="submit">Giriş yap ve testi başlat</button><p id="loginError" class="error"></p></form></section><section id="chatView" class="chat hidden"><header><div><div class="brand">CAILOX</div><span id="tester"></span></div><button id="logout" class="ghost">Oturumu bitir</button></header><div id="messages" class="messages"><div class="bubble assistant">Merhaba. Bu kontrollü TURAN test oturumundaki konuşmalar geliştirme amacıyla kaydediliyor. Doğal şekilde konuşabilirsin.</div></div><div id="feedback" class="feedback hidden"><span>Bu yanıt nasıldı?</span><div id="scores"></div></div><form id="chatForm" class="composer"><textarea id="message" rows="2" maxlength="8000" placeholder="TURAN'a mesaj yaz…" required></textarea><button type="submit">Gönder</button></form><div class="meta"><span class="dot"></span><span>Konuşma kaydı etkin</span><span id="latency"></span></div></section></main><script src="assets/app.js"></script></body></html>
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="Cailox kontrollü TURAN test sohbeti">
+  <meta name="theme-color" content="#090d16">
+  <title>Cailox</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section id="loginView" class="auth-panel">
+      <div class="brand">CAILOX</div>
+      <h1>Giriş yap</h1>
+      <p class="lead">TURAN ile test sohbetine devam et.</p>
+
+      <form id="loginForm" class="login-form">
+        <label>
+          <span>Kullanıcı adı</span>
+          <input id="username" autocomplete="username" required>
+        </label>
+        <label>
+          <span>Parola</span>
+          <input id="password" type="password" autocomplete="current-password" minlength="8" required>
+        </label>
+        <label class="consent">
+          <input id="consent" type="checkbox" required>
+          <span>Bu testte mesajların, TURAN yanıtlarının ve geri bildirimlerin geliştirme amacıyla otomatik kaydedileceğini kabul ediyorum. Parola veya özel/gizli bilgi paylaşmayacağım.</span>
+        </label>
+        <button type="submit" class="primary">Giriş yap</button>
+        <p id="loginError" class="error" role="alert"></p>
+      </form>
+    </section>
+
+    <section id="chatView" class="chat hidden" aria-label="Cailox sohbet">
+      <header class="topbar">
+        <div>
+          <div class="brand">CAILOX</div>
+          <div class="session-line"><span class="record-dot"></span><span id="tester"></span><span>• otomatik kayıt açık</span></div>
+        </div>
+        <button id="logout" class="ghost" type="button">Oturumu bitir</button>
+      </header>
+
+      <div id="messages" class="messages" aria-live="polite">
+        <div class="bubble assistant">Merhaba. Doğal şekilde yazabilir veya mikrofonu kullanabilirsin.</div>
+      </div>
+
+      <div id="feedback" class="feedback hidden">
+        <span>Yanıt nasıldı?</span>
+        <div id="scores" class="scores"></div>
+      </div>
+
+      <div class="voice-row">
+        <button id="micButton" class="mic" type="button" aria-pressed="false" title="Sesli giriş">
+          <span class="mic-icon" aria-hidden="true">●</span>
+          <span id="micLabel">Sesli giriş</span>
+        </button>
+        <span id="voiceStatus" class="voice-status">Hazır</span>
+        <label class="auto-send">
+          <input id="autoVoiceSend" type="checkbox" checked>
+          <span>Konuşma bitince gönder</span>
+        </label>
+      </div>
+
+      <form id="chatForm" class="composer">
+        <textarea id="message" rows="1" maxlength="8000" placeholder="Mesaj yaz…" required></textarea>
+        <button id="sendButton" type="submit" class="send">Gönder</button>
+      </form>
+
+      <div class="meta">
+        <span id="latency"></span>
+        <span>Enter: gönder • Shift+Enter: yeni satır</span>
+      </div>
+    </section>
+  </main>
+  <script src="assets/app.js"></script>
+</body>
+</html>
